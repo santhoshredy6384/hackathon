@@ -1,0 +1,6 @@
+- name: My first playbook
+  hosts: localhost
+  tasks:
+    - name: Print a welcome message
+      debug:
+        msg: "welcome to hackthon (via WSL)!"
