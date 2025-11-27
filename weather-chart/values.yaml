@@ -1,0 +1,20 @@
+mysql:
+  image: mysql:8.0
+  rootPassword: rootpassword
+  database: weatherapp
+  user: weatheruser
+  password: weatherpass
+  port: 3306
+
+backend:
+  image: santhosh6384/hackathonbackend:v1
+  replicas: 1
+  port: 6385
+  env:
+    springProfilesActive: docker
+
+frontend:
+  image: santhosh6384/hackathonfrontend:v1
+  replicas: 1
+  port: 4837
+  serviceType: LoadBalancer

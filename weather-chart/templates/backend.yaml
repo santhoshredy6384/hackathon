@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-backend
+  labels:
+    app: backend
+spec:
+  replicas: {{ .Values.backend.replicas }}
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: {{ .Values.backend.image }}
+        ports:
+        - containerPort: {{ .Values.backend.port }}
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: {{ .Values.backend.env.springProfilesActive }}
+        # Update DB URL to point to the mysql service created by this chart
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:mysql://mysql:{{ .Values.mysql.port }}/{{ .Values.mysql.database }}?createDatabaseIfNotExist=true
+        - name: SPRING_DATASOURCE_USERNAME
+          value: {{ .Values.mysql.user }}
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: {{ .Values.mysql.password }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  ports:
+  - port: {{ .Values.backend.port }}
+    targetPort: {{ .Values.backend.port }}
+  selector:
+    app: backend

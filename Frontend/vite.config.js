@@ -6,15 +6,15 @@ export default defineConfig({
   plugins: [react()],
   base: '/cicd_weatherApp/',
   server: {
-    port: 4836,
+    port: 4837,
     proxy: {
       '/api': {
-        target: 'http://localhost:6384',
+        target: 'http://localhost:6385',
         changeOrigin: true,
         secure: false,
       },
       '/auth': {
-        target: 'http://localhost:6384',
+        target: 'http://localhost:6385',
         changeOrigin: true,
         secure: false,
       }

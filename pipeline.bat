@@ -35,8 +35,8 @@ REM Verification
 REM ========================================
 echo 🔍 Verifying deployment...
 
-echo 1. Checking Backend Health (Port 6384)...
-curl -f http://localhost:6384/actuator/health
+echo 1. Checking Backend Health (Port 6385)...
+curl -f http://localhost:6385/actuator/health
 if %errorlevel% neq 0 (
     echo ❌ Backend health check failed
     echo 📜 Backend Logs:
@@ -46,8 +46,8 @@ if %errorlevel% neq 0 (
 echo.
 echo ✅ Backend is healthy
 
-echo 2. Checking Frontend Accessibility (Port 4836)...
-curl -f http://localhost:4836/health
+echo 2. Checking Frontend Accessibility (Port 4837)...
+curl -f http://localhost:4837/health
 if %errorlevel% neq 0 (
     echo ❌ Frontend health check failed
     echo 📜 Frontend Logs:
@@ -64,5 +64,5 @@ REM echo 🧹 Cleaning up unused images...
 REM docker image prune -f
 
 echo ✅ CI/CD Pipeline completed successfully!
-echo 🌐 Frontend: http://localhost:4836
-echo 🔌 Backend:  http://localhost:6384
+echo 🌐 Frontend: http://localhost:4837
+echo 🔌 Backend:  http://localhost:6385
