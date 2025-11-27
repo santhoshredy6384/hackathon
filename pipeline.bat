@@ -23,7 +23,7 @@ REM Start services in detached mode
 docker-compose up -d
 
 echo ⏳ Waiting for services to initialize (45 seconds)...
-timeout /t 45 /nobreak > nul
+ping 127.0.0.1 -n 46 > nul
 
 REM ========================================
 REM Verification
