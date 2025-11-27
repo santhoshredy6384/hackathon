@@ -1,4 +1,4 @@
-version: '3.8'
+pipeline.batversion: '3.8'
 
 services:
   # MySQL Database
