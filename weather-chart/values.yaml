@@ -7,14 +7,14 @@ mysql:
   port: 3306
 
 backend:
-  image: santhosh6384/hackathonbackend:v1
+  image: santhosh6384/hackathon_backend_a:v1
   replicas: 1
   port: 6385
   env:
     springProfilesActive: docker
 
 frontend:
-  image: santhosh6384/hackathonfrontend:v1
+  image: santhosh6384/hackathon_frontend_a:v1
   replicas: 1
   port: 4837
   serviceType: LoadBalancer
